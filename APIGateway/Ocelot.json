@@ -1,0 +1,64 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Orders",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5187
+        }
+      ],
+      "UpstreamPathTemplate": "/Orders",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "FileCacheOptions": { "TtlSeconds": 10 },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Limit": 5,
+        "Period": "10s",
+        "PeriodTimespan": 1
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Orders/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5187
+        }
+      ],
+      "UpstreamPathTemplate": "/Orders/{id}",
+      "UpstreamHttpMethod": [ "PUT", "GET", "DELETE" ],
+      "FileCacheOptions": { "TtlSeconds": 10 },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Limit": 5,
+        "Period": "5s",
+        "PeriodTimespan": 1
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Products",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5098
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Products",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": { "TtlSeconds": 10 },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Limit": 2,
+        "Period": "2s",
+        "PeriodTimespan": 1
+      }
+    }
+  ]
+}
